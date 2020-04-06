@@ -1,0 +1,72 @@
+<!doctype html>
+<html><head>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<style type='text/css'>
+		html { font-family:Helvetica; color:#222; }
+		h1 { color:steelblue; font-size:24px; margin-top:24px; }
+		button { margin:0 3px 10px; font-size:12px; }
+		.logLine { border-bottom:1px solid #ccc; padding:4px 2px; font-family:courier; font-size:11px; }
+	</style>
+</head><body>
+	<h1>WebViewJavascriptBridge Demo</h1>
+	<script>
+	window.onerror = function(err) {
+		log('window.onerror: ' + err)
+	}
+
+    // 定义一个setupWebViewJavascriptBridge函数
+    // 初次调用setupWebViewJavascriptBridge，不会走进两个if内部，会创建一个WVJBCallbacks属性挂载到window对象上
+    function setupWebViewJavascriptBridge(callback) {
+        // 如果window对象上有WebViewJavascriptBridge这个属性的话，会执行callback方法，并return
+        if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+        // 如果window上有WVJBCallbacks属性，会将callback（匿名函数）添加到WVJBCallbacks数组中并返回
+        if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+        // 为window 属性添加一个WVJBCallbacks属性
+        window.WVJBCallbacks = [callback];
+        // 创建一个iframe标签，并设置src
+        var WVJBIframe = document.createElement('iframe');
+        WVJBIframe.style.display = 'none';
+        WVJBIframe.src = 'https://__bridge_loaded__';
+        // 添加WVJBIframe元素到html
+        document.documentElement.appendChild(WVJBIframe);
+        // 移除WVJBIframe元素，使原生拦截url请求代理中injectJavascriptFile只走一次
+        // setTimeout():是异步的，在指定的毫秒数后，将定时任务处理的函数添加到执行队列的队尾。
+        setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+    }
+
+    // 调用setupWebViewJavascriptBridge函数，并传入一个匿名函数作为参数
+    setupWebViewJavascriptBridge(function(bridge) {
+		var uniqueId = 1
+		function log(message, data) {
+			var log = document.getElementById('log')
+			var el = document.createElement('div')
+			el.className = 'logLine'
+			el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
+			if (log.children.length) { log.insertBefore(el, log.children[0]) }
+			else { log.appendChild(el) }
+		}
+
+        // 调用WebViewJavascriptBridge_JS文件中registerHandler方法
+		bridge.registerHandler('testJavascriptHandler', function(data, responseCallback) {
+			log('ObjC called testJavascriptHandler with', data)
+			var responseData = { 'Javascript Says':'Right back atcha!' }
+			log('JS responding with', responseData)
+			responseCallback(responseData)
+		})
+
+		document.body.appendChild(document.createElement('br'))
+
+		var callbackButton = document.getElementById('buttons').appendChild(document.createElement('button'))
+		callbackButton.innerHTML = 'Fire testObjcCallback'
+		callbackButton.onclick = function(e) {
+			e.preventDefault()
+			log('JS calling handler "testObjcCallback"')
+            // 调用WebViewJavascriptBridge_JS文件中callHandler方法
+			bridge.callHandler('testObjcCallback', {'foo1': 'bar1'}, function(response) {
+				log('JS got response', response)
+			})
+		}
+	})
+	</script>
+	<div id='buttons'></div> <div id='log'></div>
+</body></html>
