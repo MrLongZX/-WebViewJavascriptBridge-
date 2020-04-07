@@ -20,10 +20,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     if (_bridge) { return; }
     
-//    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
-//    [config.preferences setValue:@(true) forKey:@"allowFileAccessFromFileURLs"];
+    // 为测试代码添加
+    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+    [config.preferences setValue:@(true) forKey:@"allowFileAccessFromFileURLs"];
     
-    WKWebView* webView = [[NSClassFromString(@"WKWebView") alloc] initWithFrame:self.view.bounds];
+    WKWebView* webView = [[NSClassFromString(@"WKWebView") alloc] initWithFrame:self.view.bounds configuration:config];
     webView.navigationDelegate = self;
     webView.UIDelegate = self;
     [self.view addSubview:webView];
@@ -41,7 +42,7 @@
         NSLog(@"sss %@", responseData);
     }];
     
-    //[self unzipAction];
+    [self unzipAction];
     [self renderButtons:webView];
     [self loadExamplePage:webView];
 }
@@ -89,11 +90,14 @@
 }
 
 - (void)loadExamplePage:(WKWebView*)webView {
+//    原代码
     NSString* htmlPath = [[NSBundle mainBundle] pathForResource:@"ExampleApp" ofType:@"html"];
     NSString* appHtml = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
     NSURL *baseURL = [NSURL fileURLWithPath:htmlPath];
     [webView loadHTMLString:appHtml baseURL:baseURL];
     
+    
+//    测试代码
 //    html放在程序内部
 //    添加方式 create folder referencess 可以
 //    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"html" inDirectory:@"123"];
@@ -110,32 +114,62 @@
 //    [webView loadData:htmlData MIMEType:@"text/html" characterEncodingName:@"UTF-8" baseURL:bundleUrl];
     
     
-//    html放在document
-//    可以
+//    html放在document下 html与js/css/图片等资源同目录、或html位于js/css/图片等资源路径的上层目录、html与js/css/图片等资源位于不同路径下
+//    如：方式一
+//       ---html
+//       ----js1.js
+//       ----css1.css
+//       ----image1.png
+//       ----html1.html
+//    如：方式二
+//       ---html
+//       ----JS
+//       ------js1.js
+//       ----CSS
+//       ------css1.css
+//       ----Image
+//       ------image1.png
+//       ----html1.html
+//    如：方式三
+//       ---html
+//       ----JS
+//       ------js1.js
+//       ----CSS
+//       ------css1.css
+//       ----Image
+//       ------image1.png
+//       ----Html
+//       ------html1.html
+    
+    
+//    方式一、二可以、方式三不不行 图片、css、js引用不上
 //    NSString *document = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
 //    NSString *path = [document stringByAppendingString:@"html/test.html"];
 //    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
     
-
-    
 //    NSString *document = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-//    NSString *htmlPath = [document stringByAppendingString:@"/html/test.html"];
+//    NSString *htmlPath = [document stringByAppendingString:@"/html/Html/test.html"];
 //    NSData *htmlData = [[NSData alloc] initWithContentsOfFile:htmlPath];
-//
 //    NSString *htmlStr = [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding];
+    
+    
+//    方式三 经测试不行 图片、css、js引用不上
+//    NSURL *baseURL = [NSURL fileURLWithPath:[document stringByAppendingString:@"/html/"]];
+//    [webView loadHTMLString:htmlStr baseURL:baseURL];
+    
+    
+//  方式三 可以
 //    NSError *error;
-//    BOOL isSuccess = [htmlStr writeToFile:[document stringByAppendingString:@"/html/syl.html"] atomically:YES encoding:NSUTF8StringEncoding error:&error];
+//    BOOL isSuccess = [htmlStr writeToFile:[document stringByAppendingString:@"/html/Html/syl.html"] atomically:YES encoding:NSUTF8StringEncoding error:&error];
 //    if (isSuccess && !error) {
-//        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[document stringByAppendingString:@"/html/syl.html"]]]];
+//        NSURL *baseURL = [NSURL fileURLWithPath:[document stringByAppendingString:@"/html/"]];
+//        [webView loadFileURL:[NSURL fileURLWithPath:[document stringByAppendingString:@"/html/Html/syl.html"]] allowingReadAccessToURL:baseURL];
 //    }
     
   
-//    经测试不行 图片、css、js引用不上
-//    NSURL *bundleUrl = [NSURL URLWithString:[document stringByAppendingString:@"html"]];
-//    [webView loadData:htmlData MIMEType:@"text/html" characterEncodingName:@"UTF-8" baseURL:bundleUrl];
-//    [webView loadHTMLString:htmlStr baseURL:[NSURL URLWithString:htmlPath]];
-
-    
+//    方式三 经测试不行 图片、css、js引用不上
+//    NSURL *baseURL = [NSURL fileURLWithPath:[document stringByAppendingString:@"/html/"]];
+//    [webView loadData:htmlData MIMEType:@"text/html" characterEncodingName:@"UTF-8" baseURL:baseURL];
 }
 
 -(void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(nonnull NSString *)message initiatedByFrame:(nonnull WKFrameInfo *)frame completionHandler:(nonnull void (^)(void))completionHandler

@@ -20,7 +20,6 @@
 		2CA0465C1711AC8E006DEE8B /* ExampleApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 2CA0465B1711AC8D006DEE8B /* ExampleApp.html */; };
 		2CAB869B1727684300BD9ED1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAB869A1727684300BD9ED1 /* Default-568h@2x.png */; };
 		2CEB3EC01602563600548120 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CEB3EBF1602563600548120 /* UIKit.framework */; };
-		3D0497602436DB7B00E9D88D /* html.zip in Resources */ = {isa = PBXBuildFile; fileRef = 3D04975F2436DB7B00E9D88D /* html.zip */; };
 		3D0497862436DBA600E9D88D /* mz_strm_os_posix.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D0497642436DBA600E9D88D /* mz_strm_os_posix.c */; };
 		3D0497872436DBA600E9D88D /* mz_strm_pkcrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D0497652436DBA600E9D88D /* mz_strm_pkcrypt.c */; };
 		3D0497882436DBA600E9D88D /* mz_strm_zlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D0497682436DBA600E9D88D /* mz_strm_zlib.c */; };
@@ -41,10 +40,11 @@
 		3D0497992436E3D700E9D88D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0497982436E3D700E9D88D /* Security.framework */; };
 		3D04979B2436E3DE00E9D88D /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D04979A2436E3DE00E9D88D /* libiconv.tbd */; };
 		3D04979D2436E3E500E9D88D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D04979C2436E3E500E9D88D /* libz.tbd */; };
-		3D0497A6243709C100E9D88D /* tcss.css in Resources */ = {isa = PBXBuildFile; fileRef = 3D0497A0243709C100E9D88D /* tcss.css */; };
-		3D0497A7243709C100E9D88D /* action.js in Resources */ = {isa = PBXBuildFile; fileRef = 3D0497A2243709C100E9D88D /* action.js */; };
-		3D0497A8243709C100E9D88D /* img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D0497A4243709C100E9D88D /* img.jpg */; };
-		3D0497A9243709C100E9D88D /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 3D0497A5243709C100E9D88D /* test.html */; };
+		3D9F0FCE243CD98E00A4DCFA /* tcss.css in Resources */ = {isa = PBXBuildFile; fileRef = 3D9F0FC7243CD98E00A4DCFA /* tcss.css */; };
+		3D9F0FCF243CD98E00A4DCFA /* action.js in Resources */ = {isa = PBXBuildFile; fileRef = 3D9F0FC9243CD98E00A4DCFA /* action.js */; };
+		3D9F0FD0243CD98E00A4DCFA /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 3D9F0FCB243CD98E00A4DCFA /* test.html */; };
+		3D9F0FD1243CD98E00A4DCFA /* img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D9F0FCD243CD98E00A4DCFA /* img.jpg */; };
+		3D9F0FD3243CD99800A4DCFA /* html.zip in Resources */ = {isa = PBXBuildFile; fileRef = 3D9F0FD2243CD99800A4DCFA /* html.zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,7 +73,6 @@
 		2CEB3EBF1602563600548120 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2CEB3EC11602563600548120 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2CEB3EC31602563600548120 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		3D04975F2436DB7B00E9D88D /* html.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = html.zip; path = "ExampleApp-iOS/html.zip"; sourceTree = "<group>"; };
 		3D0497622436DBA600E9D88D /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		3D0497642436DBA600E9D88D /* mz_strm_os_posix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mz_strm_os_posix.c; sourceTree = "<group>"; };
 		3D0497652436DBA600E9D88D /* mz_strm_pkcrypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mz_strm_pkcrypt.c; sourceTree = "<group>"; };
@@ -111,10 +110,11 @@
 		3D0497982436E3D700E9D88D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3D04979A2436E3DE00E9D88D /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		3D04979C2436E3E500E9D88D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		3D0497A0243709C100E9D88D /* tcss.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = tcss.css; sourceTree = "<group>"; };
-		3D0497A2243709C100E9D88D /* action.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = action.js; sourceTree = "<group>"; };
-		3D0497A4243709C100E9D88D /* img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img.jpg; sourceTree = "<group>"; };
-		3D0497A5243709C100E9D88D /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+		3D9F0FC7243CD98E00A4DCFA /* tcss.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = tcss.css; sourceTree = "<group>"; };
+		3D9F0FC9243CD98E00A4DCFA /* action.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = action.js; sourceTree = "<group>"; };
+		3D9F0FCB243CD98E00A4DCFA /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+		3D9F0FCD243CD98E00A4DCFA /* img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img.jpg; sourceTree = "<group>"; };
+		3D9F0FD2243CD99800A4DCFA /* html.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = html.zip; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,8 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				2CAB869A1727684300BD9ED1 /* Default-568h@2x.png */,
-				3D04979E243709C100E9D88D /* htmlTest */,
-				3D04975F2436DB7B00E9D88D /* html.zip */,
+				3D9F0FD2243CD99800A4DCFA /* html.zip */,
+				3D9F0FC5243CD98E00A4DCFA /* htmlTest */,
 				3D0497612436DBA600E9D88D /* SSZipArchive */,
 				2CA045B617117439006DEE8B /* ExampleApp-iOS */,
 				2CEB3EBE1602563600548120 /* Frameworks */,
@@ -261,38 +261,45 @@
 			path = minizip;
 			sourceTree = "<group>";
 		};
-		3D04979E243709C100E9D88D /* htmlTest */ = {
+		3D9F0FC5243CD98E00A4DCFA /* htmlTest */ = {
 			isa = PBXGroup;
 			children = (
-				3D04979F243709C100E9D88D /* Css */,
-				3D0497A1243709C100E9D88D /* Js */,
-				3D0497A3243709C100E9D88D /* Image */,
-				3D0497A5243709C100E9D88D /* test.html */,
+				3D9F0FC6243CD98E00A4DCFA /* Css */,
+				3D9F0FC8243CD98E00A4DCFA /* Js */,
+				3D9F0FCA243CD98E00A4DCFA /* Html */,
+				3D9F0FCC243CD98E00A4DCFA /* Image */,
 			);
-			name = htmlTest;
-			path = "ExampleApp-iOS/htmlTest";
+			path = htmlTest;
 			sourceTree = "<group>";
 		};
-		3D04979F243709C100E9D88D /* Css */ = {
+		3D9F0FC6243CD98E00A4DCFA /* Css */ = {
 			isa = PBXGroup;
 			children = (
-				3D0497A0243709C100E9D88D /* tcss.css */,
+				3D9F0FC7243CD98E00A4DCFA /* tcss.css */,
 			);
 			path = Css;
 			sourceTree = "<group>";
 		};
-		3D0497A1243709C100E9D88D /* Js */ = {
+		3D9F0FC8243CD98E00A4DCFA /* Js */ = {
 			isa = PBXGroup;
 			children = (
-				3D0497A2243709C100E9D88D /* action.js */,
+				3D9F0FC9243CD98E00A4DCFA /* action.js */,
 			);
 			path = Js;
 			sourceTree = "<group>";
 		};
-		3D0497A3243709C100E9D88D /* Image */ = {
+		3D9F0FCA243CD98E00A4DCFA /* Html */ = {
 			isa = PBXGroup;
 			children = (
-				3D0497A4243709C100E9D88D /* img.jpg */,
+				3D9F0FCB243CD98E00A4DCFA /* test.html */,
+			);
+			path = Html;
+			sourceTree = "<group>";
+		};
+		3D9F0FCC243CD98E00A4DCFA /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				3D9F0FCD243CD98E00A4DCFA /* img.jpg */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -362,15 +369,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D9F0FD1243CD98E00A4DCFA /* img.jpg in Resources */,
 				2CA045BF17117439006DEE8B /* InfoPlist.strings in Resources */,
+				3D9F0FD3243CD99800A4DCFA /* html.zip in Resources */,
 				2CA0465C1711AC8E006DEE8B /* ExampleApp.html in Resources */,
-				3D0497A6243709C100E9D88D /* tcss.css in Resources */,
-				3D0497A8243709C100E9D88D /* img.jpg in Resources */,
-				3D0497A7243709C100E9D88D /* action.js in Resources */,
-				3D0497602436DB7B00E9D88D /* html.zip in Resources */,
+				3D9F0FCE243CD98E00A4DCFA /* tcss.css in Resources */,
+				3D9F0FCF243CD98E00A4DCFA /* action.js in Resources */,
+				3D9F0FD0243CD98E00A4DCFA /* test.html in Resources */,
 				2CAB869B1727684300BD9ED1 /* Default-568h@2x.png in Resources */,
 				3D04978A2436DBA600E9D88D /* LICENSE in Resources */,
-				3D0497A9243709C100E9D88D /* test.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
