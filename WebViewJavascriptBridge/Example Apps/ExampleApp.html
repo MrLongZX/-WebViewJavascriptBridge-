@@ -29,7 +29,7 @@
         WVJBIframe.src = 'https://__bridge_loaded__';
         // 添加WVJBIframe元素到html
         document.documentElement.appendChild(WVJBIframe);
-        // 移除WVJBIframe元素，使原生拦截url请求代理中injectJavascriptFile只走一次
+        // 移除WVJBIframe元素，使原生拦截url请求，执行代理中injectJavascriptFile方法，并只走一次
         // setTimeout():是异步的，在指定的毫秒数后，将定时任务处理的函数添加到执行队列的队尾。
         setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
     }
@@ -68,5 +68,6 @@
 		}
 	})
 	</script>
-	<div id='buttons'></div> <div id='log'></div>
+	<div id='buttons'></div>
+    <div id='log'></div>
 </body></html>

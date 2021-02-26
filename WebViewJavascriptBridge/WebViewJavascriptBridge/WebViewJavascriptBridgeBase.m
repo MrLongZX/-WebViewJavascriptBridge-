@@ -120,6 +120,7 @@ static int logMaxLength = 500;
     }
 }
 
+// 注入js文件，并将待发送的消息发送出去
 - (void)injectJavascriptFile {
     NSString *js = WebViewJavascriptBridge_js();
     [self _evaluateJavascript:js];

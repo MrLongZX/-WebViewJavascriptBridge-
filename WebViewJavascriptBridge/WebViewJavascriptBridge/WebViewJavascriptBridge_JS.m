@@ -63,7 +63,7 @@ NSString * WebViewJavascriptBridge_js() {
 		}
 		_doSend({ handlerName:handlerName, data:data }, responseCallback);
 	}
-    // 修改bool值，控制处理原生传过来json数据时同步 or 异步执行
+    // 修改bool值，控制处理原生传过来json数据是同步 or 异步执行
 	function disableJavscriptAlertBoxSafetyTimeout() {
 		dispatchMessagesWithTimeoutSafety = false;
 	}
